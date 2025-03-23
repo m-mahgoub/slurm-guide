@@ -1,0 +1,9 @@
+---
+title: "WashU RIS Guide"
+---
+
+## Spack
+Spack is a package manager designed for high-performance computing (HPC) environments, allowing users to easily install and manage software packages and their dependencies. Below are the guides related to Spack:
+
+- [Spack Setup](../spack/spack-setup.qmd)
+- [Installing Packages](../spack/spack-install-packages.qmd)

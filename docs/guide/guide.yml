@@ -1,0 +1,13 @@
+
+# - title: Modules
+#   subtitle: Creating and using environment modules
+#   links:
+#     - text: Creating Modules
+#       # href: ../modules/creating-modules.qmd
+#     - text: Using Modules
+#       # href: ../modules/using-modules.qmd
+
+# - title: Spack
+#   links:
+#     - text: Installation
+#       href: ../spack/spack-setup.qmd

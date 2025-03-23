@@ -1,0 +1,45 @@
+/*
+Purpose: This CSS rule applies styles to `pre` elements and their nested `code` elements.
+It ensures a consistent appearance for code blocks while excluding specific cases.
+
+Details:
+- `.cell-output pre:not(.sourceCode):not(.bash)`:
+  Targets `pre` elements inside `.cell-output` containers, excluding those with `sourceCode` or `bash` classes.
+- `pre:not(.sourceCode):not(.bash)`:
+  Targets all `pre` elements globally, excluding those with `sourceCode` or `bash` classes.
+- `pre:not(.sourceCode):not(.bash) code`:
+  Ensures that nested `code` elements inside `pre` do not have conflicting styles like borders or padding.
+
+This rule is designed to:
+1. Provide a clean and readable format for code blocks.
+2. Avoid styling conflicts with syntax-highlighted or Bash-specific code blocks.
+3. Maintain a professional and consistent look across the documentation.
+*/
+.cell-output pre:not(.sourceCode):not(.bash),
+pre:not(.sourceCode):not(.bash) {
+    color: #2c3e50;                    /* dark slate for good contrast */
+    background-color: #f9f9fb;         /* soft light gray-blue */
+    font-family: Menlo, Monaco, monospace;
+    font-size: 0.75em;                 
+    border: 1px solid #d0d0d0;         /* light gray border */
+    border-radius: 4px;
+    padding: 0.5em 1em;
+    margin: 0.5em 0;
+    white-space: pre-wrap;
+    line-height: 1.4;
+  
+    max-height: 200px; /* can change this */
+    overflow: auto;
+}
+
+pre:not(.sourceCode):not(.bash) code {
+    border: none; /* Remove inner border */
+    padding: 0;   /* Remove padding to avoid spacing issues */
+    background: none; /* Ensure no background conflicts */
+}
+
+/* Further reduce the space between command code and output cells using a more negative margin */
+.cell-output {
+    margin-top: -0.9em; /* Pull the output even closer to the code */
+    margin-bottom: 1em; /* Increase the bottom margin to add more space */
+}

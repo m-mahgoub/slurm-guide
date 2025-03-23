@@ -1,0 +1,147 @@
+---
+title: Spack Setup
+engine: knitr
+---
+
+## Overview
+This guide explains how to set up a site installation of Spack as a non-root user. It assumes that you already have a working installation of Spack on your system, either system-wide or in a user directory. If Spack is not installed, please refer to the official [Spack Installation Guide](https://spack-tutorial.readthedocs.io/en/latest/tutorial_basics.html#installing-spack).
+
+While this guide is tailored for WashU RIS HPC (Compute2) users, it can be adapted for other systems.
+
+## Verify Spack Installation
+Before proceeding, ensure that Spack is installed on your system and that the `spack` command is accessible.
+
+Spack is installed as a module on RIS Compute2. Therefore, you need to load the Spack module to access the `spack` command:
+
+```bash
+# Start an interactive SLURM session
+srun --time="4:00:00" --nodes=1 --ntasks=4 --mem=24G --pty /bin/bash
+
+# Load the Spack module
+module load ris spack
+
+# Verify the Spack installation
+spack --version
+```
+
+:::{.callout-note}
+You need to load the Spack module using `module load ris spack` in the RIS current module system. Only after loading `ris` can you expose the `spack` module.
+:::
+
+## Environment Setup
+By default, Spack installs packages in either the system-wide installation directory or the user's home directory (`~/.spack`). However, it is often preferable to have a site installation of Spack that:
+
+- Can be shared by multiple users.
+- Allows non-root users to have write access.
+- Is independent of changes in individual users' home directories.
+
+Spack supports setting up an "isolated" site installation that meets these requirements. This is achieved by customizing Spack's [configuration scopes](https://spack.readthedocs.io/en/latest/configuration.html) and setting specific [environment variables](https://spack.readthedocs.io/en/latest/configuration.html#overriding-local-configuration).
+
+## Step-by-Step Spack Setup
+Follow these steps to set up Spack for a user-specific installation.
+
+### 1. Set Environment Variables
+Define the paths for Spack installation and cache. These paths determine where Spack will store its software and temporary files.
+
+```bash
+export SPACK_USER_INSTALL_PATH=/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack
+export SPACK_USER_CACHE_PATH=/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache
+```
+
+- `SPACK_USER_INSTALL_PATH`: The directory where Spack will install software and environments.
+- `SPACK_USER_CACHE_PATH`: The directory for temporary files, such as build stages and caches.
+
+### 2. Create the Spack User Directory
+Ensure the `~/.spack` directory exists. This directory will store user-specific Spack configuration files.
+
+```bash
+mkdir -p ~/.spack
+```
+
+### 3. Create the Spack Configuration File
+Write the `config.yaml` file to configure Spack's installation paths and cache locations.
+
+```bash
+cat <<EOF > ~/.spack/config.yaml
+config:
+  install_tree:
+    root: ${SPACK_USER_INSTALL_PATH}/software
+  environments_root: ${SPACK_USER_INSTALL_PATH}/environments
+  build_stage:
+    - ${SPACK_USER_CACHE_PATH}/stage
+  test_stage: ${SPACK_USER_CACHE_PATH}/test
+  source_cache: ${SPACK_USER_CACHE_PATH}/source_cache
+  misc_cache: ${SPACK_USER_CACHE_PATH}/misc_cache
+EOF
+```
+
+- `install_tree`: Specifies where Spack will install software.
+- `environments_root`: Defines the location for Spack environments.
+- `build_stage`, `test_stage`, `source_cache`, `misc_cache`: Configure paths for temporary files and caches.
+
+### 4. Create the Spack Modules Configuration File
+Write the `modules.yaml` file to configure how Spack generates module files.
+
+```bash
+cat <<EOF > ~/.spack/modules.yaml
+modules:
+  default:
+    roots:
+      tcl: ${SPACK_USER_INSTALL_PATH}/modules
+    enable:
+      - tcl
+    tcl:
+      projections:
+        all: '{name}/{version}'
+      hide_implicits: true
+      all:
+        autoload: direct
+      include:
+        - cowsay
+      exclude: 
+        - '%gcc@13.1.0'
+      hash_length: 0
+EOF
+```
+
+:::{.callout-note}
+The `include` and `exclude` options allow you to control which packages are included or excluded from module generation. For example:
+
+- `include`: Specifies a list of packages to always generate modules for.
+- `exclude`: Specifies a list of packages to never generate modules for.
+
+In the example above:
+
+- `include: cowsay` ensures that a module is always generated for the `cowsay` package.
+- `exclude: '%gcc@13.1.0'` prevents modules from being generated for packages built with GCC version 13.1.0.
+:::
+
+- `roots`: Specifies the root directory for module files.
+- `projections`: Defines the directory structure for module files.
+- `autoload`: Automatically loads dependencies when a module is loaded.
+- `include` and `exclude`: Control which packages are included or excluded from module generation.
+
+### 5. Confirm the Spack Configuration
+After creating the configuration files, confirm that Spack is using the correct paths and settings.
+
+You can check the current Spack configuration by running:
+
+```{bash}
+spack config get config
+```
+
+To check the module configuration, run:
+
+```{bash}
+spack config get modules
+```
+
+This command should display the paths and settings you specified in the `config.yaml` and `modules.yaml` files.
+
+Another useful command is `spack config blame`, which shows the source of each configuration setting. This can help you identify where specific settings are coming from, especially if you have multiple configuration files or scopes.
+
+```{bash}
+spack config blame
+```
+
+This command will display the source of each configuration setting, allowing you to verify that your custom settings are being applied correctly.

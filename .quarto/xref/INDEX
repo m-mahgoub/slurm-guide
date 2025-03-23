@@ -1,0 +1,56 @@
+{
+  "index.qmd": {
+    "index.html": "0f8613a6"
+  },
+  "about.qmd": {
+    "about.html": "935349ba"
+  },
+  "docs/guide/index.qmd": {
+    "index.html": "af00499b"
+  },
+  "docs/spack/spack-installation.qmd": {
+    "spack-installation.html": "9b32eac4"
+  },
+  "docs/spack/spack-setup.qmd": {
+    "spack-setup.html": "c34f95f5"
+  },
+  "docs/get-started/index.qmd": {
+    "index.html": "c92924c1"
+  },
+  "docs/get-started/modules.qmd": {
+    "modules.html": "70d17940"
+  },
+  "docs/get-started/containers.qmd": {
+    "containers.html": "931eedbd"
+  },
+  "docs/get-started/spack.qmd": {
+    "spack.html": "33a0ac32"
+  },
+  "docs/spack/index.qmd": {
+    "index.html": "4138aed3"
+  },
+  "docs/spack/advanced.qmd": {
+    "advanced.html": "94a5e755"
+  },
+  "docs/spack/spack-usage.qmd": {
+    "spack-usage.html": "4492dac9"
+  },
+  "docs/spack/spack-advanced.qmd": {
+    "spack-advanced.html": "452f348d"
+  },
+  "docs/spack/spack-install-packages.qmd": {
+    "spack-install-packages.html": "5a161542"
+  },
+  "docs/quick-start/containers.qmd": {
+    "containers.html": "c62ad9b6"
+  },
+  "docs/quick-start/index.qmd": {
+    "index.html": "ca0ac7f5"
+  },
+  "docs/quick-start/spack.qmd": {
+    "spack.html": "f19bc342"
+  },
+  "docs/quick-start/modules.qmd": {
+    "modules.html": "ce29a560"
+  }
+}

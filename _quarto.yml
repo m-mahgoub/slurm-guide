@@ -1,0 +1,87 @@
+project:
+  type: website
+
+website:
+  title: "SLURM User Guide"
+  page-navigation: true
+  navbar:
+    # left:
+    #   - href: index.qmd
+    #     text: Home
+    #   - about.qmd
+
+  # navbar:
+  #   background: light
+    # logo: quarto.png
+    # logo-alt: "Quarto logo."
+    # title: false
+    # collapse-below: lg
+    left:
+      - text: "Quick Start"
+        href: docs/quick-start/index.qmd
+      - text: "Guide"
+        href: docs/guide/index.qmd
+      # - text: "Get Started"
+      #   href: docs/get-started/index.qmd
+      # - text: "Guide"
+      #   href: docs/guide/index.qmd
+      # - text: Extensions
+      #   href: docs/extensions/index.qmd
+      # - text: "Reference"
+      #   href: docs/reference/index.qmd
+      # - text: "Gallery"
+      #   href: docs/gallery/index.qmd
+      # - text: "Blog"
+      #   href: docs/blog/index.qmd
+      # - text: "Help"
+      #   menu:
+      #     - text: "Report a Bug"
+      #       icon: "bug"
+      #       href: "https://github.com/quarto-dev/quarto-cli/issues"
+      #     - text: "Ask a Question"
+      #       icon: "chat-right-text"
+      #       href: "https://github.com/quarto-dev/quarto-cli/discussions"
+      #     - text: "FAQ"
+      #       icon: "question-circle"
+      #       href: docs/faq/index.qmd
+
+  sidebar:
+    - id: quick-start
+      title: "Quick Start"
+      style: "floating"
+      collapse-level: 2
+      align: left
+      contents:
+        - docs/get-started/index.qmd
+    - id: guide
+      collapse-level: 2
+      title: "Guide"
+      style: "floating"
+      align: left
+      contents:
+        - section: "Guide"
+          href: docs/guide/index.qmd
+          contents:
+            - section: "Spack"
+              href: docs/spack/index.qmd
+              contents:
+                - text: "Setup"
+                  href: docs/spack/spack-setup.qmd
+                - text: "Install Packages"
+                  href: docs/spack/spack-install-packages.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+execute:
+  echo: true
+  eval: true
+  freeze: auto
+  cache: true
+

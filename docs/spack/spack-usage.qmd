@@ -1,0 +1,11 @@
+---
+title: "Spack Usage"
+subtitle: "Placeholder for Spack Usage Content"
+page-layout: article
+anchor-sections: false
+search: false
+---
+
+## Overview
+
+This section is a placeholder for Spack usage content. Details will be added in the future.

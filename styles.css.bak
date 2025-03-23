@@ -1,0 +1,48 @@
+/* css styles */
+.output .cell-output:not(.sourceCode):not(.bash) {
+    color: #2c3e50;                    /* dark slate for good contrast */
+    background-color: #f9f9fb;         /* soft light gray-blue */
+    font-family: Menlo, Monaco, monospace;
+    font-size: 0.75em;                 
+    border: 1px solid #d0d0d0;         /* light gray border */
+    border-radius: 4px;
+    padding: 0.5em 1em;
+    margin: 0.5em 0;
+    white-space: pre-wrap;
+    line-height: 1.4;
+  
+    max-height: 200px; /* can change this */
+    overflow: auto;
+}
+
+.cell-output pre.output {
+    color: #2c3e50;                    /* dark slate for good contrast */
+    background-color: #f9f9fb;         /* soft light gray-blue */
+    font-family: Menlo, Monaco, monospace;
+    font-size: 0.75em;                 
+    border: 1px solid #d0d0d0;         /* light gray border */
+    border-radius: 4px;
+    padding: 0.5em 1em;
+    margin: 0.5em 0;
+    white-space: pre-wrap;
+    line-height: 1.4;
+  
+    max-height: 200px; /* can change this */
+    overflow: auto;
+}
+
+pre:not(.sourceCode):not(.bash) code {
+    color: #2c3e50;                    /* dark slate for good contrast */
+    background-color: #f9f9fb;         /* soft light gray-blue */
+    font-family: Menlo, Monaco, monospace;
+    font-size: 0.75em;                 
+    border: 1px solid #d0d0d0;         /* light gray border */
+    border-radius: 4px;
+    padding: 0.5em 1em;
+    margin: 0.5em 0;
+    white-space: pre-wrap;
+    line-height: 1.4;
+  
+    max-height: 200px; /* can change this */
+    overflow: auto;
+}

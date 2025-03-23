@@ -1,0 +1,208 @@
+---
+title: "Spack"
+engine: knitr
+execute:
+    freeze: true
+---
+
+# Installing Packages in Spack
+
+This guide provides a step-by-step walkthrough for installing the `cowsay` package and module using Spack on the Compute2 SLURM cluster. `cowsay` is a fun utility that generates ASCII art of a cow saying a message. While installing `cowsay` is straightforward, there are some steps specific to the RIS Compute2 cluster that need to be followed to ensure compatibility.
+
+## Set Spack Environment
+
+Before installing any packages for the first time, you need to configure Spack to work correctly with the Compute2 SLURM cluster.
+
+First, set some Spack environment variables. This can be easily done by sourcing `${SPACK_ROOT}/share/spack/setup-env.sh`:
+
+```bash
+# Get the Spack root directory
+SPACK_ROOT=$(spack location -r)
+
+# Source the Spack environment setup script
+. "$SPACK_ROOT/share/spack/setup-env.sh"
+```
+
+:::{.callout-note}
+You need to run the above source command every time you want to install a new package with Spack. Alternatively, you can add it to your `.bashrc` or `.bash_profile` to make it persistent across sessions, but be cautious as it may interfere with other environments.
+:::
+
+## Configure Spack for Compute2
+
+There are a few configurations that need to be set up before you can successfully install packages with Spack on Compute2. These are done once when you install your first package with Spack.
+
+### Configure GCC Compiler
+
+Compute2 currently uses GCC 13.1.0 as the default compiler. You need to ensure that Spack is configured to use this version of GCC.
+
+#### Check Current Compiler Configuration
+
+To check the current compiler configuration in Spack, run:
+
+```{bash}
+spack compilers
+```
+
+If `gcc@13.1.0` is not listed, you need to load the appropriate module and add it to Spack's list of available compilers. If it is listed, you can skip this step.
+
+#### Add GCC to Spack's Compiler List
+
+To do this, first check if the GCC module is loaded:
+
+```{bash}
+module list
+```
+
+If `gcc/13.1.0` is not listed, load it using:
+
+```bash
+module load gcc/13.1.0
+```
+
+Then, add GCC to Spack's list of available compilers:
+
+```{bash}
+spack compiler find
+```
+
+Verify that the compiler has been successfully added by running:
+
+```{bash}
+spack compilers
+```
+
+### Configure `krb5`
+
+Before installing any packages, you need to configure `krb5`, which is a dependency for many packages in Spack. This step is crucial to avoid permission issues during package installations. On Compute2, `krb5` is provided as a system package. To ensure that Spack uses the system's `krb5` instead of trying to build its own version, you need to configure it properly.
+
+First, find the `krb5` package using Spack's external find command:
+
+```{bash}
+spack external find krb5
+```
+
+This command finds the `krb5` package and adds it to `~/.spack/packages.yaml`. Confirm that it is added by running:
+
+```{bash}
+cat ~/.spack/packages.yaml
+```
+
+You should see an entry for `krb5` in the output. This ensures that Spack uses the system's `krb5` package instead of trying to build its own version.
+
+### Install `binutils` Version 2.43.1
+
+`binutils` is a collection of binary tools used for handling object files, libraries, and executables. It is essential for compiling and linking programs, especially when using `gcc`. Currently, the default version of `binutils` on RIS Compute2 is `2.35`. This version has compatibility issues and errors when used with `gcc@13.1.0`. To resolve these issues, you need to install a newer version of `binutils`, specifically `2.43.1`, to ensure compatibility with `gcc@13.1.0` and the RIS Compute2 architecture. This version has been tested and confirmed to work well with the current setup. Additionally, some specific options were determined through trial and error to find the right combination that works effectively with `gcc@13.1.0` and the Compute2 architecture.
+
+First, check if the spec for `binutils` with the required version and options is available:
+
+```{bash}
+spack spec binutils@2.43.1 +gas +ld +gold +headers %gcc@13.1.0 ^zlib-ng cflags="-mno-avx512f"
+```
+
+If no errors are shown, you can proceed to install `binutils` with the specified options:
+
+```{bash}
+spack install binutils@2.43.1 +gas +ld +gold +headers %gcc@13.1.0 ^zlib-ng cflags="-mno-avx512f"
+```
+
+:::{.callout-important}
+Sometimes, you might encounter an error like this during installation:
+
+```bash
+/tmp/cc2CRT67.s:31537: Error: no such instruction: `vmovw 14(%rsp),%xmm0'
+```
+
+This error can be resolved by sourcing the Spack environment setup script again:
+
+```bash
+. "$SPACK_ROOT/share/spack/setup-env.sh"
+```
+
+After sourcing the script, try the installation command again.
+:::
+
+Load the installed `binutils`:
+
+```bash
+spack load binutils@2.43.1
+```
+
+Add `binutils` to the PATH and other environment variables to ensure proper functionality:
+
+```bash
+export PATH=$(spack location -i binutils@2.43.1)/bin:$PATH
+export LD_LIBRARY_PATH=$(spack location -i binutils@2.43.1)/lib:$LD_LIBRARY_PATH
+export AS=$(spack location -i binutils@2.43.1)/bin/as
+export LD=$(spack location -i binutils@2.43.1)/bin/ld
+```
+
+:::{.callout-note}
+You need to run the above export commands every time you use Spack to install or build packages. Alternatively, if you use Spack frequently to install tools, it is advisable to add these export commands to your `.bashrc` or `.bash_profile` for convenience.
+:::
+
+Verify that `binutils` is correctly added to the PATH:
+
+```{bash}
+which as
+which ld
+```
+
+## Install `cowsay`
+
+Once Spack is initialized, install the `cowsay` package. First, check if `cowsay` is listed in Spack's package repository:
+
+```{bash}
+spack list cowsay
+```
+
+Find available versions of `cowsay`:
+
+```{bash}
+spack info cowsay
+```
+
+Install the `cowsay` package:
+
+```{bash}
+spack install cowsay
+```
+
+Finally, verify that `cowsay` is installed:
+
+```{bash}
+spack find cowsay
+```
+
+## Load the `cowsay` Module
+
+After successfully installing `cowsay`, you need to load its module first before using it. This step is crucial as it sets up the environment variables and paths required for `cowsay` to function correctly. When installing packages with Spack, there are two ways to load the module: using `spack load` or `module load`. To load it using `spack`, you can simply run `spack load cowsay`. This command will automatically set up the environment for `cowsay`, making it ready for use. However, it is recommended to use `module load` for better compatibility with the Compute2 environment. Luckily, with the current setup, spack automatically creates a Tcl module for `cowsay`, that is compatible with the Compute2 module system.
+
+### Add Spack's Module Path to the Module System
+
+To ensure that the `cowsay` module is recognized by the Compute2 module system, you need to add Spack's module path to the module system. This step is essential for loading the `cowsay` module using `module load`. In the current setup, modules are stored in `/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/modules/linux-rhel9-sapphirerapids/`. To append this path to the module system, you can use the following command:
+
+```bash
+export MODULEPATH=/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/modules/linux-rhel9-sapphirerapids/:$MODULEPATH 
+```
+
+:::{.callout-note}
+You can also add the above mentioned Spack modules' path to your `.bashrc` or `.bash_profile` to make it persistent across sessions. This way, you won't have to set it every time you log in.
+:::
+
+### Load the `cowsay` Module
+
+Now that the Spack module path is set, you can load the `cowsay` module using the `module load` command:
+
+```bash
+module load cowsay
+```
+
+## Verify the Installation
+
+To verify that `cowsay` is installed and working correctly, you can run the following command:
+
+```{bash}
+cowsay "Hello, World!"
+```
+
+This command should produce an ASCII art cow saying "Hello, World!" If you see the cow, congratulations! You have successfully installed and configured `cowsay` using Spack on Compute2.

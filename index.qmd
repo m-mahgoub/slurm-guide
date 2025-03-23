@@ -1,0 +1,23 @@
+---
+title: "WashU RIS: HPC Environment Guide"
+---
+
+This guide is designed to help you navigate the **WashU RIS Compute2 SLURM cluster** for bioinformatics and computational biology workflows in the **Spencer Lab**. It is not intended to be a comprehensive guide to SLURM or the RIS Compute2 cluster, but rather a starting point for common tasks and workflows used in our lab. For more detailed information, please refer to the official [WashU RIS documentation](https://washu.atlassian.net/wiki/spaces/RUD/pages/1720615105/Compute2+Quickstart) and the [SLURM documentation](https://slurm.schedmd.com/documentation.html).
+
+## Table of Contents
+
+- [**Quick Start**](docs/quick-start/index.qmd)
+
+- [**Guide**](docs/guide/index.qmd): A collection of guides for common tasks and workflows on the Compute2 SLURM cluster.
+
+  - [**Module System**](): Understand how to use the module system to manage software environments.
+
+  - [**Containers**](): Learn how to use Singularity/Apptainer and Pyxis to run containerized applications on the Compute2 SLURM cluster.
+  
+  - [**Spack**](docs/spack/index.qmd): Set up and manage software environments using Spack, a package manager for HPC.
+  
+  - [**JupyterLab**](): Set up and use JupyterLab server on the Compute2 SLURM cluster.
+  
+  - [**RStudio**](): Set up and use RStudio server on the Compute2 SLURM cluster.
+  
+  - [**VSCode Remote**](): Set up and use Visual Studio Code Remote on the Compute2 SLURM cluster.
