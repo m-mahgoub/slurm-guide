@@ -1,12 +1,8 @@
 ---
 title: "Spack"
-subtitle: "Practical Guide to Spack on Compute2"
-page-layout: article
-anchor-sections: true
-search: true
 ---
 
-## Spack
+
 Spack is a package manager designed for high-performance computing (HPC) environments, allowing users to easily install and manage software packages and their dependencies. Below are the guides related to Spack:
 
 ## Why Spack?

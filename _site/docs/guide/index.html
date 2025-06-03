@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>WashU RIS Guide – SLURM User Guide</title>
+<title>WashU RIS: HPC Environment Guide – SLURM User Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,14 +130,22 @@ ul.task-list li input[type="checkbox"] {
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Module System</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Containers</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../docs/spack/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Spack</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../docs/spack/spack-setup.html" class="sidebar-item-text sidebar-link">
@@ -152,6 +160,18 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">JupyterLab</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">RStudio</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">VSCode Remote</span></span>
+  </li>
       </ul>
   </li>
     </ul>
@@ -159,21 +179,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#spack" id="toc-spack" class="nav-link active" data-scroll-target="#spack">Spack</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">WashU RIS Guide</h1>
+<h1 class="title">WashU RIS: HPC Environment Guide</h1>
 </div>
 
 
@@ -190,16 +204,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="spack" class="level2">
-<h2 class="anchored" data-anchor-id="spack">Spack</h2>
-<p>Spack is a package manager designed for high-performance computing (HPC) environments, allowing users to easily install and manage software packages and their dependencies. Below are the guides related to Spack:</p>
 <ul>
-<li><a href="../../docs/spack/spack-setup.html">Spack Setup</a></li>
-<li><a href="../../docs/spack/spack-install-packages.html">Installing Packages</a></li>
+<li><p><a href="../../docs/guide/index.html"><strong>Guide</strong></a>: A collection of guides for common tasks and workflows on the Compute2 SLURM cluster.</p>
+<ul>
+<li><p><a href=""><strong>Module System</strong></a>: Understand how to use the module system to manage software environments.</p></li>
+<li><p><a href=""><strong>Containers</strong></a>: Learn how to use Singularity/Apptainer and Pyxis to run containerized applications on the Compute2 SLURM cluster.</p></li>
+<li><p><a href="../../docs/spack/index.html"><strong>Spack</strong></a>: Set up and manage software environments using Spack, a package manager for HPC.</p></li>
+<li><p><a href=""><strong>JupyterLab</strong></a>: Set up and use JupyterLab server on the Compute2 SLURM cluster.</p></li>
+<li><p><a href=""><strong>RStudio</strong></a>: Set up and use RStudio server on the Compute2 SLURM cluster.</p></li>
+<li><p><a href=""><strong>VSCode Remote</strong></a>: Set up and use Visual Studio Code Remote on the Compute2 SLURM cluster.</p></li>
+</ul></li>
 </ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

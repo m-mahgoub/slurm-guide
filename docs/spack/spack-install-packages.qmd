@@ -179,10 +179,10 @@ After successfully installing `cowsay`, you need to load its module first before
 
 ### Add Spack's Module Path to the Module System
 
-To ensure that the `cowsay` module is recognized by the Compute2 module system, you need to add Spack's module path to the module system. This step is essential for loading the `cowsay` module using `module load`. In the current setup, modules are stored in `/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/modules/linux-rhel9-sapphirerapids/`. To append this path to the module system, you can use the following command:
+To ensure that the `cowsay` module is recognized by the Compute2 module system, you need to add Spack's module path to the module system. This step is essential for loading the `cowsay` module using `module load`. In the current setup, modules are stored in `/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/modules/linux-rhel9-sapphirerapids/`. To append this path to the module system, you can use the following command:
 
 ```bash
-export MODULEPATH=/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/modules/linux-rhel9-sapphirerapids/:$MODULEPATH 
+export MODULEPATH=/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/modules/linux-rhel9-sapphirerapids/:$MODULEPATH 
 ```
 
 :::{.callout-note}

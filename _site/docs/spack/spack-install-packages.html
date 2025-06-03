@@ -164,14 +164,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Module System</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Containers</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../docs/spack/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Spack</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../docs/spack/spack-setup.html" class="sidebar-item-text sidebar-link">
@@ -185,6 +193,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">JupyterLab</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">RStudio</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">VSCode Remote</span></span>
   </li>
       </ul>
   </li>
@@ -371,10 +391,10 @@ krb5@1.20.1</code></pre>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">spack</span> install binutils@2.43.1 +gas +ld +gold +headers %gcc@13.1.0 ^zlib-ng cflags=<span class="st">"-mno-avx512f"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[+] /usr (external glibc-2.34-gcrw4gafyklwlrq65fbsa7kxjc3uclxs)
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/gcc-runtime-13.1.0-ejzbgmwkb2zvlczfrubsry2kxpaerlhh
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/zlib-ng-2.2.1-dpe5qvn52jsktpvk4z2wjcx6alualupu
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/zstd-1.5.6-3w5td2opetl5rthgsba3ererfozremng
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/binutils-2.43.1-rvtydb7c44s5ueey7k635l27c3soluib</code></pre>
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/gcc-runtime-13.1.0-ejzbgmwkb2zvlczfrubsry2kxpaerlhh
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/zlib-ng-2.2.1-dpe5qvn52jsktpvk4z2wjcx6alualupu
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/zstd-1.5.6-3w5td2opetl5rthgsba3ererfozremng
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/binutils-2.43.1-rvtydb7c44s5ueey7k635l27c3soluib</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -419,8 +439,8 @@ Note
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> as</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> ld</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/__spack_path_placeholder__/__spack_path_placeholder__/__spac/linux-rhel9-sapphirerapids/gcc-13.1.0/binutils-2.43.1-rvtydb7c44s5ueey7k635l27c3soluib/bin/as
-/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/__spack_path_placeholder__/__spack_path_placeholder__/__spac/linux-rhel9-sapphirerapids/gcc-13.1.0/binutils-2.43.1-rvtydb7c44s5ueey7k635l27c3soluib/bin/ld</code></pre>
+<pre><code>/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/__spack_path_placeholder__/__spack_path_placeholder__/__spa/linux-rhel9-sapphirerapids/gcc-13.1.0/binutils-2.43.1-rvtydb7c44s5ueey7k635l27c3soluib/bin/as
+/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/__spack_path_placeholder__/__spack_path_placeholder__/__spa/linux-rhel9-sapphirerapids/gcc-13.1.0/binutils-2.43.1-rvtydb7c44s5ueey7k635l27c3soluib/bin/ld</code></pre>
 </div>
 </div>
 </section>
@@ -476,31 +496,12 @@ Licenses:
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">spack</span> install cowsay</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[+] /usr (external glibc-2.34-gcrw4gafyklwlrq65fbsa7kxjc3uclxs)
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/gcc-runtime-13.1.0-ejzbgmwkb2zvlczfrubsry2kxpaerlhh
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/diffutils-3.10-gurtuvtux2n42azagworzd2aehpouger
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/pkgconf-2.2.0-2azftz6o5juzvss3hzwkss2frzgskobd
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/zlib-ng-2.2.1-dpe5qvn52jsktpvk4z2wjcx6alualupu
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/gmake-4.4.1-rysf64ht4ssf37tqza4pcvwx4ia3g35w
-==&gt; Installing bzip2-1.0.8-jjbso5zq7au5ql3eok7mgwqgbw4zcs7a [7/13]
-==&gt; No binary for bzip2-1.0.8-jjbso5zq7au5ql3eok7mgwqgbw4zcs7a found: installing from source
-==&gt; Fetching https://mirror.spack.io/_source-cache/archive/ab/ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269.tar.gz
-==&gt; Ran patch() for bzip2
-==&gt; bzip2: Executing phase: 'install'
-==&gt; bzip2: Successfully installed bzip2-1.0.8-jjbso5zq7au5ql3eok7mgwqgbw4zcs7a
-  Stage: 0.62s.  Install: 2.04s.  Post-install: 0.17s.  Total: 2.99s
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/bzip2-1.0.8-jjbso5zq7au5ql3eok7mgwqgbw4zcs7a
-==&gt; Installing ncurses-6.5-zuudv673gyyqjmrynmoff23aouwpdxlc [8/13]
-==&gt; No binary for ncurses-6.5-zuudv673gyyqjmrynmoff23aouwpdxlc found: installing from source
-==&gt; Fetching https://mirror.spack.io/_source-cache/archive/13/136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6.tar.gz
-==&gt; Applied patch /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/var/spack/repos/builtin/packages/ncurses/rxvt_unicode_6_4.patch
-==&gt; ncurses: Executing phase: 'autoreconf'
-==&gt; ncurses: Executing phase: 'configure'
-==&gt; ncurses: Executing phase: 'build'
-==&gt; ncurses: Executing phase: 'install'
-==&gt; ncurses: Successfully installed ncurses-6.5-zuudv673gyyqjmrynmoff23aouwpdxlc
-  Stage: 4.76s.  Autoreconf: 0.00s.  Configure: 37.63s.  Build: 18.23s.  Install: 31.61s.  Post-install: 12.32s.  Total: 1m 44.88s
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/ncurses-6.5-zuudv673gyyqjmrynmoff23aouwpdxlc
-==&gt; Installing berkeley-db-18.1.40-hhgfzochuajbpcn3k6w7wuy7lnhkglpv [9/13]
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/gcc-runtime-13.1.0-ejzbgmwkb2zvlczfrubsry2kxpaerlhh
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/pkgconf-2.2.0-2azftz6o5juzvss3hzwkss2frzgskobd
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/diffutils-3.10-gurtuvtux2n42azagworzd2aehpouger
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/zlib-ng-2.2.1-dpe5qvn52jsktpvk4z2wjcx6alualupu
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/gmake-4.4.1-rysf64ht4ssf37tqza4pcvwx4ia3g35w
+==&gt; Installing berkeley-db-18.1.40-hhgfzochuajbpcn3k6w7wuy7lnhkglpv [7/13]
 ==&gt; No binary for berkeley-db-18.1.40-hhgfzochuajbpcn3k6w7wuy7lnhkglpv found: installing from source
 ==&gt; Fetching https://mirror.spack.io/_source-cache/archive/0c/0cecb2ef0c67b166de93732769abdeba0555086d51de1090df325e18ee8da9c8.tar.gz
 ==&gt; Applied patch /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/var/spack/repos/builtin/packages/berkeley-db/drop-docs.patch
@@ -511,8 +512,27 @@ Licenses:
 ==&gt; berkeley-db: Executing phase: 'build'
 ==&gt; berkeley-db: Executing phase: 'install'
 ==&gt; berkeley-db: Successfully installed berkeley-db-18.1.40-hhgfzochuajbpcn3k6w7wuy7lnhkglpv
-  Stage: 30.75s.  Autoreconf: 0.00s.  Configure: 17.37s.  Build: 7.09s.  Install: 0.77s.  Post-install: 0.31s.  Total: 56.49s
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/berkeley-db-18.1.40-hhgfzochuajbpcn3k6w7wuy7lnhkglpv
+  Stage: 31.73s.  Autoreconf: 0.00s.  Configure: 18.55s.  Build: 7.77s.  Install: 0.95s.  Post-install: 0.35s.  Total: 59.61s
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/berkeley-db-18.1.40-hhgfzochuajbpcn3k6w7wuy7lnhkglpv
+==&gt; Installing ncurses-6.5-zuudv673gyyqjmrynmoff23aouwpdxlc [8/13]
+==&gt; No binary for ncurses-6.5-zuudv673gyyqjmrynmoff23aouwpdxlc found: installing from source
+==&gt; Fetching https://mirror.spack.io/_source-cache/archive/13/136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6.tar.gz
+==&gt; Applied patch /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/var/spack/repos/builtin/packages/ncurses/rxvt_unicode_6_4.patch
+==&gt; ncurses: Executing phase: 'autoreconf'
+==&gt; ncurses: Executing phase: 'configure'
+==&gt; ncurses: Executing phase: 'build'
+==&gt; ncurses: Executing phase: 'install'
+==&gt; ncurses: Successfully installed ncurses-6.5-zuudv673gyyqjmrynmoff23aouwpdxlc
+  Stage: 7.40s.  Autoreconf: 0.00s.  Configure: 39.89s.  Build: 17.66s.  Install: 30.57s.  Post-install: 11.48s.  Total: 1m 47.32s
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/ncurses-6.5-zuudv673gyyqjmrynmoff23aouwpdxlc
+==&gt; Installing bzip2-1.0.8-jjbso5zq7au5ql3eok7mgwqgbw4zcs7a [9/13]
+==&gt; No binary for bzip2-1.0.8-jjbso5zq7au5ql3eok7mgwqgbw4zcs7a found: installing from source
+==&gt; Fetching https://mirror.spack.io/_source-cache/archive/ab/ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269.tar.gz
+==&gt; Ran patch() for bzip2
+==&gt; bzip2: Executing phase: 'install'
+==&gt; bzip2: Successfully installed bzip2-1.0.8-jjbso5zq7au5ql3eok7mgwqgbw4zcs7a
+  Stage: 0.85s.  Install: 2.19s.  Post-install: 0.24s.  Total: 3.49s
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/bzip2-1.0.8-jjbso5zq7au5ql3eok7mgwqgbw4zcs7a
 ==&gt; Installing readline-8.2-ruakm6n2i66pp7f722xpl7niog2nlajz [10/13]
 ==&gt; No binary for readline-8.2-ruakm6n2i66pp7f722xpl7niog2nlajz found: installing from source
 ==&gt; Fetching https://mirror.spack.io/_source-cache/archive/3f/3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35.tar.gz
@@ -523,8 +543,8 @@ Licenses:
 ==&gt; readline: Executing phase: 'build'
 ==&gt; readline: Executing phase: 'install'
 ==&gt; readline: Successfully installed readline-8.2-ruakm6n2i66pp7f722xpl7niog2nlajz
-  Stage: 1.49s.  Autoreconf: 0.00s.  Configure: 8.70s.  Build: 1.34s.  Install: 0.40s.  Post-install: 0.30s.  Total: 12.49s
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/readline-8.2-ruakm6n2i66pp7f722xpl7niog2nlajz
+  Stage: 1.63s.  Autoreconf: 0.00s.  Configure: 9.74s.  Build: 1.49s.  Install: 0.60s.  Post-install: 0.40s.  Total: 14.21s
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/readline-8.2-ruakm6n2i66pp7f722xpl7niog2nlajz
 ==&gt; Installing gdbm-1.23-mdkmmwarhumwtq6ungbo2imm7l5hzlgk [11/13]
 ==&gt; No binary for gdbm-1.23-mdkmmwarhumwtq6ungbo2imm7l5hzlgk found: installing from source
 ==&gt; Fetching https://mirror.spack.io/_source-cache/archive/74/74b1081d21fff13ae4bd7c16e5d6e504a4c26f7cde1dca0d963a484174bbcacd.tar.gz
@@ -534,30 +554,30 @@ Licenses:
 ==&gt; gdbm: Executing phase: 'build'
 ==&gt; gdbm: Executing phase: 'install'
 ==&gt; gdbm: Successfully installed gdbm-1.23-mdkmmwarhumwtq6ungbo2imm7l5hzlgk
-  Stage: 1.28s.  Autoreconf: 0.00s.  Configure: 7.11s.  Build: 2.48s.  Install: 1.16s.  Post-install: 0.39s.  Total: 12.74s
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/gdbm-1.23-mdkmmwarhumwtq6ungbo2imm7l5hzlgk
+  Stage: 1.89s.  Autoreconf: 0.00s.  Configure: 8.35s.  Build: 3.07s.  Install: 1.44s.  Post-install: 0.35s.  Total: 15.56s
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/gdbm-1.23-mdkmmwarhumwtq6ungbo2imm7l5hzlgk
 ==&gt; Installing perl-5.40.0-tkrbryon3u4hxvmasn52gr5qin4hwlhh [12/13]
 ==&gt; No binary for perl-5.40.0-tkrbryon3u4hxvmasn52gr5qin4hwlhh found: installing from source
 ==&gt; Fetching https://mirror.spack.io/_source-cache/archive/c7/c740348f357396327a9795d3e8323bafd0fe8a5c7835fc1cbaba0cc8dfe7161f.tar.gz
 ==&gt; Fetching https://mirror.spack.io/_source-cache/archive/9d/9da50e155df72bce55cb69f51f1dbb4b62d23740fb99f6178bb27f22ebdf8a46.tar.gz
 ==&gt; Moving resource stage
-    source: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/stage/mmohamed/resource-cpanm-tkrbryon3u4hxvmasn52gr5qin4hwlhh/spack-src/
-    destination: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/stage/mmohamed/spack-stage-perl-5.40.0-tkrbryon3u4hxvmasn52gr5qin4hwlhh/spack-src/cpanm/cpanm
+    source: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/stage/mmohamed/resource-cpanm-tkrbryon3u4hxvmasn52gr5qin4hwlhh/spack-src/
+    destination: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/stage/mmohamed/spack-stage-perl-5.40.0-tkrbryon3u4hxvmasn52gr5qin4hwlhh/spack-src/cpanm/cpanm
 ==&gt; Ran patch() for perl
 ==&gt; perl: Executing phase: 'configure'
 ==&gt; perl: Executing phase: 'build'
 ==&gt; perl: Executing phase: 'install'
 ==&gt; perl: Successfully installed perl-5.40.0-tkrbryon3u4hxvmasn52gr5qin4hwlhh
-  Stage: 27.35s.  Configure: 1m 15.54s.  Build: 28.15s.  Install: 38.90s.  Post-install: 16.30s.  Total: 3m 6.82s
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/perl-5.40.0-tkrbryon3u4hxvmasn52gr5qin4hwlhh
+  Stage: 32.08s.  Configure: 1m 21.62s.  Build: 33.52s.  Install: 49.52s.  Post-install: 18.65s.  Total: 3m 36.19s
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/perl-5.40.0-tkrbryon3u4hxvmasn52gr5qin4hwlhh
 ==&gt; Installing cowsay-3.04-3po3c76ns6ihvqqoximyweiwdcg4du52 [13/13]
 ==&gt; No binary for cowsay-3.04-3po3c76ns6ihvqqoximyweiwdcg4du52 found: installing from source
 ==&gt; Fetching https://mirror.spack.io/_source-cache/archive/d8/d8b871332cfc1f0b6c16832ecca413ca0ac14d58626491a6733829e3d655878b.tar.gz
 ==&gt; No patches needed for cowsay
 ==&gt; cowsay: Executing phase: 'install'
 ==&gt; cowsay: Successfully installed cowsay-3.04-3po3c76ns6ihvqqoximyweiwdcg4du52
-  Stage: 0.73s.  Install: 0.75s.  Post-install: 0.74s.  Total: 2.85s
-[+] /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/cowsay-3.04-3po3c76ns6ihvqqoximyweiwdcg4du52</code></pre>
+  Stage: 0.53s.  Install: 0.42s.  Post-install: 0.62s.  Total: 2.05s
+[+] /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software/[padded-to-128-chars]/linux-rhel9-sapphirerapids/gcc-13.1.0/cowsay-3.04-3po3c76ns6ihvqqoximyweiwdcg4du52</code></pre>
 </div>
 </div>
 <p>Finally, verify that <code>cowsay</code> is installed:</p>
@@ -574,8 +594,8 @@ cowsay@3.04</code></pre>
 <p>After successfully installing <code>cowsay</code>, you need to load its module first before using it. This step is crucial as it sets up the environment variables and paths required for <code>cowsay</code> to function correctly. When installing packages with Spack, there are two ways to load the module: using <code>spack load</code> or <code>module load</code>. To load it using <code>spack</code>, you can simply run <code>spack load cowsay</code>. This command will automatically set up the environment for <code>cowsay</code>, making it ready for use. However, it is recommended to use <code>module load</code> for better compatibility with the Compute2 environment. Luckily, with the current setup, spack automatically creates a Tcl module for <code>cowsay</code>, that is compatible with the Compute2 module system.</p>
 <section id="add-spacks-module-path-to-the-module-system" class="level3">
 <h3 class="anchored" data-anchor-id="add-spacks-module-path-to-the-module-system">Add Spack’s Module Path to the Module System</h3>
-<p>To ensure that the <code>cowsay</code> module is recognized by the Compute2 module system, you need to add Spack’s module path to the module system. This step is essential for loading the <code>cowsay</code> module using <code>module load</code>. In the current setup, modules are stored in <code>/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/modules/linux-rhel9-sapphirerapids/</code>. To append this path to the module system, you can use the following command:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MODULEPATH</span><span class="op">=</span>/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/modules/linux-rhel9-sapphirerapids/:<span class="va">$MODULEPATH</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To ensure that the <code>cowsay</code> module is recognized by the Compute2 module system, you need to add Spack’s module path to the module system. This step is essential for loading the <code>cowsay</code> module using <code>module load</code>. In the current setup, modules are stored in <code>/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/modules/linux-rhel9-sapphirerapids/</code>. To append this path to the module system, you can use the following command:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MODULEPATH</span><span class="op">=</span>/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/modules/linux-rhel9-sapphirerapids/:<span class="va">$MODULEPATH</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

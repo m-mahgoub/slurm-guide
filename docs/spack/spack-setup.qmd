@@ -44,8 +44,8 @@ Follow these steps to set up Spack for a user-specific installation.
 Define the paths for Spack installation and cache. These paths determine where Spack will store its software and temporary files.
 
 ```bash
-export SPACK_USER_INSTALL_PATH=/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack
-export SPACK_USER_CACHE_PATH=/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache
+export SPACK_USER_INSTALL_PATH=/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack
+export SPACK_USER_CACHE_PATH=/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache
 ```
 
 - `SPACK_USER_INSTALL_PATH`: The directory where Spack will install software and environments.

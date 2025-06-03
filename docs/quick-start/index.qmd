@@ -1,63 +1,49 @@
 ---
-title: "Quick Start"
-page-layout: article
-anchor-sections: false
-search: false
+title: "Quick Start Guide"
+engine: knitr
+execute: 
+  freeze: false
 ---
-## Background
 
-- Compute2 uses [Environment Modules](https://modules.readthedocs.io/en/latest/index.html) to manage software packages. However, it does *not* handle the installation of those packages.
+## Setting Up Your Environment
 
-- While many of the tools we use are available via Docker images, using modules is often preferable for interactive workflows in VS Code or notebooks—especially when integrating with SLURM and other modules that aren't included in Docker environments.
+This section will guide you through the steps to set up your environment, load modules, and verify your setup. Follow these steps to ensure you are ready to use the Compute2 SLURM cluster effectively.
 
-- Compute2 supports [Spack](https://spack.readthedocs.io/en/latest/) for software installation. Spack not only compiles packages from source but also automatically generates modulefiles for each installation. It also supports installing pre-built binaries when available.
+### Launch an Interactive Session
 
-- Spack allows you to create isolated environments similar to conda. These environments can include multiple packages and system libraries. Unlike conda, Spack is specifically designed for HPC systems where users typically lack root privileges. It efficiently manages dependencies and enables shared package installations across environments.
+To begin, launch an interactive SLURM session. This ensures that you are not running heavy workloads on the login node.
 
-## Lab Setup
-
-- I installed essential lab tools using Spack, including `samtools`, `bedtools`, `bcftools`, and many others, along with their dependencies. Additionally, I installed Python and R with commonly used packages for both languages.
-
-- These installations are bundled into a single Spack environment named `basetools`. The environment is configured to support:
-  - Jupyter Server (via both the VS Code interface and web interface)
-  - RStudio Server (VS Code only)
-
-- Note: RStudio Server via the web interface typically requires root access to install, unless running in containers. However, RStudio can be used through VS Code Server via the module system. Full web access is only feasible via containers.
-
-## Quick Start
-
-Before using any of the installed tools, make sure to **launch an interactive SLURM session**. Avoid running heavy workloads on the login node.
-
-```{bash}
+```bash
 srun --time="4:00:00" --nodes=1 --ntasks=4 --mem=24G --pty /bin/bash
 ```
 
-Once inside an interactive session:
+### Configure Your Environment
 
-1. **Export the custom module path** to include user-installed environments.
-2. **Load the `basetools` module**, which provides access to the core tools used in the lab.
+#### Set Up the Module Path
 
-```{bash}
-# Export the modules installation path
-export MODULEPATH=/storage2/fs1/dspencer/Active/spencerlab/mohamed2/modules/spack/modules/environments:$MODULEPATH
+Export the custom module path to include user-installed environments:
 
-# Load the 'basetools' module
+```bash
+export MODULEPATH=/storage2/fs1/dspencer/Active/spencerlab/apps/modules/modulefiles:$MODULEPATH
+```
+
+#### Load Core Tools
+
+Load the `basetools` module to access the core tools used in the lab:
+
+```bash
 module load basetools
 ```
 
-:::{.callout-note}
-You can streamline this setup by adding the export and module load commands to your `.bashrc` file:
+### Automate Your Setup (Optional)
 
-- Persistent module path: Add the `export MODULEPATH=...` line to automatically include the custom module path on login.
-- Optional auto-loading of `basetools`:
-  - You may choose to load the `basetools` module by default (e.g., in `.bashrc`).
-  - Alternatively, you can conditionally load it only when working interactively via VS Code Remote-SSH, which is common for development and notebook usage.
+To streamline your workflow, you can add the setup commands to your `.bashrc` file. This ensures that the environment is configured automatically upon login.
 
-Here’s an example `.bashrc` snippet that does both:
+#### Example `.bashrc` Configuration
 
-```{bash}
+```bash
 # Export the custom module path
-export MODULEPATH=/storage2/fs1/dspencer/Active/spencerlab/mohamed2/modules/spack/modules/environments:$MODULEPATH
+export MODULEPATH=/storage2/fs1/dspencer/Active/spencerlab/apps/modules/modulefiles:$MODULEPATH
 
 # Conditionally load 'basetools' when using VS Code Remote-SSH
 if [[ -n "$VSCODE_IPC_HOOK_CLI" ]]; then
@@ -65,14 +51,103 @@ if [[ -n "$VSCODE_IPC_HOOK_CLI" ]]; then
   module load basetools
 fi
 ```
-:::
 
-Finally, verify that everything is working by checking the version of a core tool like `samtools`:
+### Verify Your Setup
+
+Finally, verify that your environment is correctly configured by checking the version of a core tool like `samtools`:
 
 ```{bash}
-#| eval: true
-#| class-output: output
 samtools --version
 ```
 
-With the `basetools` module loaded, now you should have access to most of the tools available in docker base-image, R and Python with commonly used packages.
+With the `basetools` module loaded, you should now have access to most of the tools available in the Docker base image, as well as R and Python with commonly used packages.
+
+---
+
+## Apptainer Jobs
+
+Apptainer is a container technology designed for high-performance computing environments. It allows you to run containerized applications on the Compute2 SLURM cluster. This section demonstrates how to use Apptainer for a common bioinformatics task.
+
+### Example: Converting BAM to CRAM Using Apptainer
+
+This example shows how to convert a BAM file to a CRAM file using `samtools` within an Apptainer container.
+
+#### Step 1: Download Input Files
+
+First, download the required input files (a BAM file and a reference genome):
+
+```{bash}
+mkdir -p ~/test
+wget -O ~/test/test.bam https://raw.githubusercontent.com/m-mahgoub/bam2fastq/f9163d85ad8912929b242a08a21d505d84776337/data/SPT5_T0_rep1.sorted.bam
+wget -O ~/test/ref.fa https://raw.githubusercontent.com/m-mahgoub/bam2fastq/refs/heads/main/data/genome.fa
+```
+
+#### Step 2: Convert BAM to CRAM
+
+Use `srun` and `apptainer exec` to run commands inside the containerized environment. Bind directories to the container using the `--bind` option, and set the `APPTAINER_CACHEDIR` to a writable directory for caching the container image.
+
+```{bash}
+module load ris apptainer && \
+export APPTAINER_CACHEDIR=/scratch2/fs1/dspencer/mohamed/.apptainer-cache && \
+srun --nodelist=c2-bigmem-002 \
+    apptainer exec \
+    --bind "/home/mmohamed:/home/mmohamed,/storage2/fs1/dspencer/Active:/storage2/fs1/dspencer/Active" \
+    docker://ghcr.io/dhslab/docker-baseimage:250222 \
+    samtools view -C -T ~/test/ref.fa -o ~/test/test.cram ~/test/test.bam
+```
+
+#### Step 3: Verify the CRAM File
+
+Check the contents of the CRAM file to ensure the conversion was successful:
+
+```{bash}
+module load ris apptainer && \
+export APPTAINER_CACHEDIR=/scratch2/fs1/dspencer/mohamed/.apptainer-cache && \
+srun --nodelist=c2-bigmem-002 \
+    apptainer exec \
+    --bind "/home/mmohamed:/home/mmohamed,/storage2/fs1/dspencer/Active:/storage2/fs1/dspencer/Active" \
+    docker://ghcr.io/dhslab/docker-baseimage:250222 \
+    samtools view ~/test/test.cram | head -n 1
+```
+
+### Additional Notes
+
+- Apptainer supports multiple execution methods, such as `apptainer shell`, `apptainer run`, or directly running from a Docker image (`docker://...`) or a local `.sif` file (e.g., `apptainer exec /path/to/image.sif ...`).
+- Differences exist between Apptainer and Docker in handling bind mounts and environment variables. Refer to the [Apptainer documentation](https://apptainer.org/docs/user/main/) for more details.
+
+---
+
+## Running a Container Job
+
+This section explains how to run containerized jobs using other container technologies on the Compute2 SLURM cluster.
+
+...content for running container jobs...
+
+---
+
+## Running a JupyterLab Server
+
+Set up and use a JupyterLab server on the Compute2 SLURM cluster for interactive data analysis and visualization.
+
+...content for running JupyterLab server...
+
+---
+
+## Running an RStudio Server
+
+Learn how to set up and use an RStudio server on the Compute2 SLURM cluster for statistical computing and graphics.
+
+...content for running RStudio server...
+
+---
+
+### Additional Resources
+
+For more detailed guides and advanced workflows, explore the following:
+
+- [Module System]()
+- [Containers]()
+- [Spack](/docs/spack/index.qmd)
+- [JupyterLab]()
+- [RStudio]()
+- [VSCode Remote]()

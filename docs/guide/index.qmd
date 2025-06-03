@@ -1,9 +1,17 @@
 ---
-title: "WashU RIS Guide"
+title: "WashU RIS: HPC Environment Guide"
 ---
 
-## Spack
-Spack is a package manager designed for high-performance computing (HPC) environments, allowing users to easily install and manage software packages and their dependencies. Below are the guides related to Spack:
+- [**Guide**](/docs/guide/index.qmd): A collection of guides for common tasks and workflows on the Compute2 SLURM cluster.
 
-- [Spack Setup](../spack/spack-setup.qmd)
-- [Installing Packages](../spack/spack-install-packages.qmd)
+  - [**Module System**](): Understand how to use the module system to manage software environments.
+
+  - [**Containers**](): Learn how to use Singularity/Apptainer and Pyxis to run containerized applications on the Compute2 SLURM cluster.
+  
+  - [**Spack**](/docs/spack/index.qmd): Set up and manage software environments using Spack, a package manager for HPC.
+  
+  - [**JupyterLab**](): Set up and use JupyterLab server on the Compute2 SLURM cluster.
+  
+  - [**RStudio**](): Set up and use RStudio server on the Compute2 SLURM cluster.
+  
+  - [**VSCode Remote**](): Set up and use Visual Studio Code Remote on the Compute2 SLURM cluster.

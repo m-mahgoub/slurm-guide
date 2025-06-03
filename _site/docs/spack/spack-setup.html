@@ -165,14 +165,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Module System</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Containers</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../docs/spack/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Spack</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../docs/spack/spack-setup.html" class="sidebar-item-text sidebar-link active">
@@ -186,6 +194,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">JupyterLab</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">RStudio</span></span>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">VSCode Remote</span></span>
   </li>
       </ul>
   </li>
@@ -282,8 +302,8 @@ Note
 <section id="set-environment-variables" class="level3">
 <h3 class="anchored" data-anchor-id="set-environment-variables">1. Set Environment Variables</h3>
 <p>Define the paths for Spack installation and cache. These paths determine where Spack will store its software and temporary files.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SPACK_USER_INSTALL_PATH</span><span class="op">=</span>/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SPACK_USER_CACHE_PATH</span><span class="op">=</span>/storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SPACK_USER_INSTALL_PATH</span><span class="op">=</span>/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SPACK_USER_CACHE_PATH</span><span class="op">=</span>/storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>SPACK_USER_INSTALL_PATH</code>: The directory where Spack will install software and environments.</li>
 <li><code>SPACK_USER_CACHE_PATH</code>: The directory for temporary files, such as build stages and caches.</li>
@@ -374,7 +394,7 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>config:
   install_tree:
-    root: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software
+    root: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software
     projections:
       all: '{architecture}/{compiler.name}-{compiler.version}/{name}-{version}-{hash}'
     # install_tree can include an optional padded length (int or boolean)
@@ -388,14 +408,14 @@ Note
 
   # Locations where templates should be found
     padded_length: 128
-  environments_root: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/environments
+  environments_root: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/environments
   build_stage:
-  - /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/stage
+  - /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/stage
   - $tempdir/$user/spack-stage
   - $user_cache_path/stage
-  test_stage: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/test
-  source_cache: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/source_cache
-  misc_cache: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/misc_cache
+  test_stage: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/test
+  source_cache: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/source_cache
+  misc_cache: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/misc_cache
   template_dirs:
   - $spack/share/spack/templates
 
@@ -455,7 +475,7 @@ Note
   default:
     # Where to install modules
     roots:
-      tcl: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/modules
+      tcl: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/modules
       lmod: $HOME/.spack/share/spack/lmod
     # What type of modules to use ("tcl" and/or "lmod")
     enable:
@@ -611,7 +631,7 @@ Note
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/defaults/packages.yaml:84       modules:
 /home/mmohamed/.spack/modules.yaml:2                                                                                 default:
 /home/mmohamed/.spack/modules.yaml:3                                                                                   roots:
-/home/mmohamed/.spack/modules.yaml:4                                                                                     tcl: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/modules
+/home/mmohamed/.spack/modules.yaml:4                                                                                     tcl: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/modules
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/modules.yaml:42                       lmod: $HOME/.spack/share/spack/lmod
 /home/mmohamed/.spack/modules.yaml:5                                                                                   enable:
 /home/mmohamed/.spack/modules.yaml:6                                                                                   - tcl
@@ -650,18 +670,18 @@ Note
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/modules.yaml:35                     - CMAKE_PREFIX_PATH
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/modules.yaml:35                 config:
 /home/mmohamed/.spack/config.yaml:2                                                                                  install_tree:
-/home/mmohamed/.spack/config.yaml:3                                                                                    root: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/software
+/home/mmohamed/.spack/config.yaml:3                                                                                    root: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/software
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/config.yaml:6                       projections:
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/config.yaml:7                         all: '{architecture}/{compiler.name}-{compiler.version}/{name}-{version}-{hash}'
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/config.yaml:14                      padded_length: 128
-/home/mmohamed/.spack/config.yaml:4                                                                                  environments_root: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/environments
+/home/mmohamed/.spack/config.yaml:4                                                                                  environments_root: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/environments
 /home/mmohamed/.spack/config.yaml:5                                                                                  build_stage:
-/home/mmohamed/.spack/config.yaml:6                                                                                  - /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/stage
+/home/mmohamed/.spack/config.yaml:6                                                                                  - /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/stage
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/defaults/config.yaml:70           - $tempdir/$user/spack-stage
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/defaults/config.yaml:71           - $user_cache_path/stage
-/home/mmohamed/.spack/config.yaml:7                                                                                  test_stage: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/test
-/home/mmohamed/.spack/config.yaml:8                                                                                  source_cache: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/source_cache
-/home/mmohamed/.spack/config.yaml:9                                                                                  misc_cache: /storage2/fs1/dspencer/Active/spencerlab/app/modules/spack/.cache/misc_cache
+/home/mmohamed/.spack/config.yaml:7                                                                                  test_stage: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/test
+/home/mmohamed/.spack/config.yaml:8                                                                                  source_cache: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/source_cache
+/home/mmohamed/.spack/config.yaml:9                                                                                  misc_cache: /storage2/fs1/dspencer/Active/spencerlab/apps/modules/spack/.cache/misc_cache
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/defaults/config.yaml:33           template_dirs:
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/defaults/config.yaml:34           - $spack/share/spack/templates
 /scratch2/fs1/sleong/Active/compute2/ris/thpc/linux/software/spack/v0.23/etc/spack/defaults/config.yaml:37           license_dir: $spack/etc/spack/licenses
