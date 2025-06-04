@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: site
+  output-dir: docs
 
 website:
   title: "SLURM User Guide"
@@ -8,9 +8,9 @@ website:
   navbar:
     left:
       - text: "Quick Start"
-        href: docs/quick-start/index.qmd
+        href: content/quick-start/index.qmd
       - text: "Guide"
-        href: docs/guide/index.qmd
+        href: content/guide/index.qmd
   sidebar:
     - id: quick-start
       title: "Quick Start"
@@ -18,7 +18,7 @@ website:
       collapse-level: 2
       align: left
       contents:
-        - docs/get-started/index.qmd
+        - content/get-started/index.qmd
     - id: guide
       collapse-level: 2
       title: "Guide"
@@ -26,25 +26,25 @@ website:
       align: left
       contents:
         - section: "Guide"
-          href: docs/guide/index.qmd
+          href: content/guide/index.qmd
           contents:
             - section: "Module System"
-              href: docs/guide/index.qmd
+              href: content/guide/index.qmd
             - section: "Containers"
-              href: docs/guide/index.qmd              
+              href: content/guide/index.qmd              
             - section: "Spack"
-              href: docs/spack/index.qmd
+              href: content/spack/index.qmd
               contents:
                 - text: "Setup"
-                  href: docs/spack/spack-setup.qmd
+                  href: content/spack/spack-setup.qmd
                 - text: "Install Packages"
-                  href: docs/spack/spack-install-packages.qmd
+                  href: content/spack/spack-install-packages.qmd
             - section: "JupyterLab"
-              href: docs/guide/index.qmd
+              href: content/guide/index.qmd
             - section: "RStudio"
-              href: docs/guide/index.qmd
+              href: content/guide/index.qmd
             - section: "VSCode Remote"
-              href: docs/guide/index.qmd            
+              href: content/guide/index.qmd            
 format:
   html:
     theme:

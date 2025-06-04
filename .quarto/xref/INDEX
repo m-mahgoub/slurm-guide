@@ -52,5 +52,29 @@
   },
   "docs/quick-start/modules.qmd": {
     "modules.html": "ce29a560"
+  },
+  "content/guide/index.qmd": {
+    "index.html": "270c652e"
+  },
+  "content/quick-start/containers.qmd": {
+    "containers.html": "778b4c52"
+  },
+  "content/quick-start/index.qmd": {
+    "index.html": "bab0c2ff"
+  },
+  "content/quick-start/spack.qmd": {
+    "spack.html": "663d8601"
+  },
+  "content/quick-start/modules.qmd": {
+    "modules.html": "ee99d500"
+  },
+  "content/spack/spack-setup.qmd": {
+    "spack-setup.html": "8c9b79ed"
+  },
+  "content/spack/index.qmd": {
+    "index.html": "fd8413c8"
+  },
+  "content/spack/spack-install-packages.qmd": {
+    "spack-install-packages.html": "63d5fac0"
   }
 }

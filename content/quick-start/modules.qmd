@@ -1,0 +1,82 @@
+---
+title: "Modules Usage in Compute2"
+subtitle: "Using Environment Modules and Spack for Software Management"
+page-layout: article
+anchor-sections: false
+search: false
+execute: 
+  eval: false
+---
+
+## Background
+
+- Compute2 uses [Environment Modules](https://modules.readthedocs.io/en/latest/index.html) to manage software packages. However, it does *not* handle the installation of those packages.
+
+- While many of the tools we use are available via Docker images, using modules is often preferable for interactive workflows in VS Code or notebooks—especially when integrating with SLURM and other modules that aren't included in Docker environments.
+
+- Compute2 supports [Spack](https://spack.readthedocs.io/en/latest/) for software installation. Spack not only compiles packages from source but also automatically generates modulefiles for each installation. It also supports installing pre-built binaries when available.
+
+- Spack allows you to create isolated environments similar to conda. These environments can include multiple packages and system libraries. Unlike conda, Spack is specifically designed for HPC systems where users typically lack root privileges. It efficiently manages dependencies and enables shared package installations across environments.
+
+## Setup
+
+- I installed essential lab tools using Spack, including `samtools`, `bedtools`, `bcftools`, and many others, along with their dependencies. Additionally, I installed Python and R with commonly used packages for both languages.
+
+- These installations are bundled into a single Spack environment named `labtools`. The environment is configured to support:
+  - Jupyter Server (via both the VS Code interface and web interface)
+  - RStudio Server (VS Code only)
+
+- Note: RStudio Server via the web interface typically requires root access to install, unless running in containers. However, RStudio can be used through VS Code Server via the module system. Full web access is only feasible via containers.
+
+## Quick Start
+
+Before using any of the installed tools, make sure to **launch an interactive SLURM session**. Avoid running heavy workloads on the login node.
+
+```{bash}
+srun --time="4:00:00" --nodes=1 --ntasks=4 --mem=24G --pty /bin/bash
+```
+
+Once inside an interactive session:
+
+1. **Export the custom module path** to include user-installed environments.
+2. **Load the `labtools` module**, which provides access to the core tools used in the lab.
+
+```{bash}
+# Export the modules installation path
+export MODULEPATH=/storage2/fs1/dspencer/Active/spencerlab/mohamed2/modules/spack/modules/environments:$MODULEPATH
+
+# Load the 'labtools' module
+module load labtools
+```
+
+:::{.callout-note}
+You can streamline this setup by adding the export and module load commands to your `.bashrc` file:
+
+- Persistent module path: Add the `export MODULEPATH=...` line to automatically include the custom module path on login.
+- Optional auto-loading of `labtools`:
+  - You may choose to load the `labtools` module by default (e.g., in `.bashrc`).
+  - Alternatively, you can conditionally load it only when working interactively via VS Code Remote-SSH, which is common for development and notebook usage.
+
+Here’s an example `.bashrc` snippet that does both:
+
+```{bash}
+# Export the custom module path
+export MODULEPATH=/storage2/fs1/dspencer/Active/spencerlab/mohamed2/modules/spack/modules/environments:$MODULEPATH
+
+# Conditionally load 'labtools' when using VS Code Remote-SSH
+if [[ -n "$VSCODE_IPC_HOOK_CLI" ]]; then
+  echo "Detected VS Code Remote-SSH session. Loading 'labtools' module..."
+  module load labtools
+fi
+```
+:::
+
+Finally, verify that everything is working by checking the version of a core tool like `samtools`:
+
+```{bash}
+#| eval: true
+#| class-output: output
+samtools --version
+```
+
+With the `labtools` module loaded, now you should have access to most of the tools available in docker base-image, R and Python with commonly used packages.

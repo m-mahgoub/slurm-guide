@@ -6,15 +6,15 @@ This guide is designed to help you navigate the **WashU RIS Compute2 SLURM clust
 
 ## Table of Contents
 
-- [**Quick Start**](docs/quick-start/index.qmd)
+- [**Quick Start**](content/quick-start/index.qmd)
 
-- [**Guide**](docs/guide/index.qmd): A collection of guides for common tasks and workflows on the Compute2 SLURM cluster.
+- [**Guide**](content/guide/index.qmd): A collection of guides for common tasks and workflows on the Compute2 SLURM cluster.
 
   - [**Module System**](): Understand how to use the module system to manage software environments.
 
   - [**Containers**](): Learn how to use Singularity/Apptainer and Pyxis to run containerized applications on the Compute2 SLURM cluster.
   
-  - [**Spack**](docs/spack/index.qmd): Set up and manage software environments using Spack, a package manager for HPC.
+  - [**Spack**](content/spack/index.qmd): Set up and manage software environments using Spack, a package manager for HPC.
   
   - [**JupyterLab**](): Set up and use JupyterLab server on the Compute2 SLURM cluster.
   
